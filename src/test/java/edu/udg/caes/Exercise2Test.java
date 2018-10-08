@@ -3,7 +3,8 @@ package edu.udg.caes;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Vector;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,33 +13,31 @@ public class Exercise2Test {
     // Tests not implemented yet
 
     @Test
-    public void testUnionEmptyVector() {
-        Vector<Object> a = new Vector<Object>();
-        Vector<Object> b = new Vector<Object>();
-        Vector<Object> res = null;
+    public void testUnionEmptySet() {
+        Set<Object> a = new HashSet<>();
+        Set<Object> b = new HashSet<>();
+        Set<Object> res = null;
 
-        Vector unionVector = Exercise2.union(a, b);
+        Set unionSet = Exercise2.union(a, b);
 
-        assertEquals(res, unionVector);
-
-    }
-
-    @Test
-    public void testUnionNullVector() {
-        Vector<Object> a = null;
-        Vector<Object> b = null;
-
-        Vector unionVector = Exercise2.union(a, b);
-
-        assertNotNull(unionVector, "Vector Null");
+        assertEquals(res, unionSet);
 
     }
 
     @Test
-    public void testUnionRepeatVector(){
-        Vector<Object> a = new Vector<Object>();
-        Vector<Object> b = new Vector<Object>();
-        Vector<Object> res = new Vector<Object>();
+    public void testUnionNullSet() {
+        Set<Object> a = null;
+        Set<Object> b = null;
+
+        assertThrows(NullPointerException.class, ()->Exercise2.union(a, b));
+
+    }
+
+    @Test
+    public void testUnionRepeatSet(){
+        Set<Object> a = new HashSet<>();
+        Set<Object> b = new HashSet<>();
+        Set<Object> res = new HashSet<>();
         a.add("1");
         a.add("2");
 
@@ -48,9 +47,9 @@ public class Exercise2Test {
         res.add("1");
         res.add("2");
         res.add("3");
-        Vector unionVector = Exercise2.union(a, b);
+        Set unionSet = Exercise2.union(a, b);
 
 
-        assertEquals(unionVector, res);
+        assertEquals(unionSet, res);
     }
 }

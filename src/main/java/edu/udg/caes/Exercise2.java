@@ -1,22 +1,29 @@
 package edu.udg.caes;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 public class Exercise2 {
 
     /**
-     * Vector union operation
+     * Set union operation
      *
-     *  @param a first vector
-     *  @param b second vector
-     *  @return objects that are in either one of the two argument vectors
+     *  @param a first set, not null and not empty
+     *  @param b second set, not null and not empty
+     *  @return objects that are in either one of the two argument set, and no repeats elements
      */
-    public static Vector union (Vector a, Vector b)
+    public static Set union (Set a, Set b)
     {
-        Vector<Object> unionVector = new Vector<Object>(a);
-        unionVector.addAll(b);
+        if(a.isEmpty() || b.isEmpty()) {
+            return null;
+        }
 
-        return unionVector;
+        Set<Object> unionSet = new HashSet<>();
+        unionSet.addAll(a);
+        unionSet.addAll(b);
+
+        return unionSet;
     }
 
 }
